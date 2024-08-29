@@ -1,12 +1,24 @@
 terraform {
-  cloud {
-    hostname = "app.terraform.io"
-
-    organization = "test12345ralala"
-    workspaces {
-      name = " bio-tfstate-tfcloud"
-    }
+  # cloud {
+  #   hostname     = "app.terraform.io"
+  #   organization = "test12345ralala"
+  #   workspaces {
+  #     name = "bio-tfstate-tfcloud"
+  #   }
+  # }
+  # backend "remote" {
+  #   hostname     = "app.terraform.io"
+  #   organization = "test12345ralala"
+  #   workspaces {
+  #     name = "bio-tfstate-tfcloud"
+  #   }
+  # }
+  backend "s3" {
+    bucket = "my-tf-test-bucket-sdfsdfsdgsd"
+    key    = "state"
+    region = "eu-west-1"
   }
+
   required_version = ">=1.5.0"
   required_providers {
     aws = {
